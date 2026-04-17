@@ -1,0 +1,58 @@
+Um petshop precisa de um sistema simples para calcular o valor do banho de cachorros.
+O preço do banho varia de acordo com o peso e a raça do animal.
+
+Criar um programa em Python que:
+
+Utilize um dicionário com informações de cães
+ Permita ao usuário escolher um cachorro
+ Mostre o peso, a raça e o valor do banho
+
+
+
+ Cada quilo do cachorro é cobrado o valor de 2.5
+
+
+ Crie um arquivo para ler o json
+ import json 
+    def leitura():
+        with open('dados.json','r', encoding='utf-8') as arquivo:
+        dados = json.load(arquivo)
+    return(dados)
+
+ Crie um arquivo de menu
+def mostrar(dados):
+    print("Cachorros")
+    for c, raca in enumerate(dados.keys(), start=1):
+        print(f"{c} - {raca}")
+
+Crie a main
+
+from ler import leitura
+from menu import mostrar
+
+def BemVindo() :
+    print("Bem Vindo a PetShop")
+
+    print("O que vocce deseja fazer ?")
+    opcao = input("""
+        1- Dar banho
+        2- Sair     
+        """)
+
+    match opcao: 
+        case "1":
+            dados = leitura
+            mostrar(dados)
+
+            raca = input("digite a raca: ")
+            peso = dados[raca]
+
+            valor = peso * 2.5
+
+            print(f"O cachorro {raca}, peso {peso}kg")
+            print(f"valor do banho: R${valor:.2f}")
+        case "2":
+            print("saindo")
+        case _:
+            print("essa opcao nao existe")        
+ 
